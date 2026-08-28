@@ -13,17 +13,31 @@
 
 ### 为什么不能用自动签名（这一步卡了很久，值得记下来）
 
-自动签名会让 Xcode 去申请一张**云托管（cloud-managed）**发布证书，而这个账号
-从来没被授予过那项权限：
+自动签名会让 Xcode 去要一张**云托管（cloud-managed）**发布证书，然后失败：
 
 ```
 403 FORBIDDEN_ERROR
 "You haven't been given access to cloud-managed distribution certificates."
 ```
 
-误导人的地方在于：账号角色查出来是 `ACCOUNT_HOLDER` + `ADMIN`、
-`provisioningAllowed: true`，权限一点不缺 —— 卡的是「云托管」这个**特定功能**，
-和角色无关。而门户上本来就有一张手工签发的 `DISTRIBUTION` 证书（2027-08-27 到期）。
+误导人的地方在于**这和角色无关**。查 `/v1/users` 返回
+`roles: ['ACCOUNT_HOLDER','ADMIN']`、`provisioningAllowed: true` —— 权限已经顶格，
+再怎么提权都不会变。
+
+至于"为什么没被授予"，有两种解释，我**没能区分开**：
+
+1. 账号本身确实没开这项功能
+2. 或者 —— 走 **ASC API key 这条认证路径**就不能用云签名（Apple 的设计上，
+   云托管签名要求 Apple ID 账号会话）；同一个账号换成 Xcode 登录的会话可能就过了
+
+要区分只能拿一个已登录 Xcode 的会话再跑一次（不带 `-authenticationKey*`），
+本机 Xcode 账号列表是空的，做不到。**但这不影响结论**：手动路线更快、
+更可预测，而且没有副作用（见下），所以没必要去区分。
+
+已经核实过的事实：门户上有一张**手工签发**的 `DISTRIBUTION` 证书
+（2027-08-27 到期，即 08:16:47 签发），账号上一共只有 3 张证书、
+`DISTRIBUTION` 只有这一张 —— 也就是说**没有多出来的证书要清理**，
+不需要吊销任何东西。
 
 **解法**：用现有证书自己建描述文件，然后手动签名，完全不走云签名。
 
