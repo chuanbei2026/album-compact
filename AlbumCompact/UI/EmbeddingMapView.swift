@@ -107,7 +107,7 @@ struct EmbeddingMapView: View {
                         AssetImageView(id: s.id, side: 200)
                             .frame(width: 60, height: 78)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
-                        Text(s.app ?? "未命名")
+                        Text(s.app ?? String(localized: "未命名"))
                             .font(.caption2).foregroundStyle(.secondary)
                     }
                     .padding(6)

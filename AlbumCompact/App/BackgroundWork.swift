@@ -35,11 +35,11 @@ enum BackgroundWork {
             var expired = false
             task.expirationHandler = {
                 expired = true
-                lastOutcome = "被系统中断（已处理的部分已缓存）"
+                lastOutcome = String(localized: "被系统中断（已处理的部分已缓存）")
             }
             // The runner polls `shouldContinue` and stops cooperatively.
             runner { !expired }
-            if !expired { lastOutcome = "后台跑完了" }
+            if !expired { lastOutcome = String(localized: "后台跑完了") }
             task.setTaskCompleted(success: !expired)
             schedule()      // ask for another slot; there may be more to do
         }

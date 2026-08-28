@@ -327,7 +327,7 @@ private struct CardView: View {
         }
     }
 
-    private func verdict(_ text: String, _ icon: String,
+    private func verdict(_ text: LocalizedStringKey, _ icon: String,
                          _ color: Color, _ amount: CGFloat) -> some View {
         ZStack {
             color.opacity(0.30 * amount)
@@ -356,9 +356,9 @@ private struct ReasonStrip: View {
         VStack(spacing: 6) {
             HStack(spacing: 8) {
                 if let app = appName {
-                    Chip(text: app, icon: "app.badge.checkmark", tint: Palette.keep)
+                    Chip(verbatim: app, icon: "app.badge.checkmark", tint: Palette.keep)
                 }
-                Chip(text: candidate.category.title,
+                Chip(verbatim: candidate.category.title,
                      icon: candidate.category.systemImage,
                      tint: Palette.accent)
                 Chip(text: "把握 \(Int(candidate.confidence * 100))%",
@@ -381,7 +381,9 @@ private struct ReasonStrip: View {
 private struct ActionButton: View {
     let icon: String
     let tint: Color
-    let label: String
+    /// LocalizedStringKey, not String — see the note on `Chip`. As `String`
+    /// these five action labels stayed Chinese in every other language.
+    let label: LocalizedStringKey
     var big = false
     var disabled = false
     let action: () -> Void

@@ -24,9 +24,9 @@ enum ScanStage: Equatable {
 
     var etaText: String? {
         guard let e = eta, e > 1 else { return nil }
-        if e < 90 { return "约 \(Int(e)) 秒" }
-        if e < 3600 { return "约 \(Int((e / 60).rounded())) 分钟" }
-        return String(format: "约 %.1f 小时", e / 3600)
+        if e < 90 { return String(localized: "约 \(Int(e)) 秒") }
+        if e < 3600 { return String(localized: "约 \(Int((e / 60).rounded())) 分钟") }
+        return String(format: String(localized: "约 %.1f 小时"), e / 3600)
     }
 
     var label: String {

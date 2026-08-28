@@ -199,7 +199,7 @@ final class AppModel {
             if usedModel, fused != candidates[i].category {
                 candidates[i].category = fused
                 candidates[i].confidence = conf
-                candidates[i].reasons = ["按你标注过的同类截图判断"]
+                candidates[i].reasons = [String(localized: "按你标注过的同类截图判断")]
                 changed += 1
             }
         }
@@ -278,18 +278,18 @@ final class AppModel {
 
     var learningSummary: String {
         if !candidates.isEmpty && !VisionAnalyzer.embeddingsAvailable {
-            return "这台设备取不到 Vision 向量，只用规则判断（模拟器上属正常）"
+            return String(localized: "这台设备取不到 Vision 向量，只用规则判断（模拟器上属正常）")
         }
         let d = Store.shared.deletability
         let c = Store.shared.classifier
-        if d.sampleCount == 0 { return "还没有学习样本 — 滑几十张就会开始变准" }
-        var parts = ["已从 \(d.sampleCount) 次滑动中学习"]
+        if d.sampleCount == 0 { return String(localized: "还没有学习样本 — 滑几十张就会开始变准") }
+        var parts = [String(localized: "已从 \(d.sampleCount) 次滑动中学习")]
         if d.isWarm {
-            parts.append("排序权重 \(Int(d.influence * 100))%")
+            parts.append(String(localized: "排序权重 \(Int(d.influence * 100))%"))
         } else {
             parts.append("还需 \(max(0, 8 - min(d.positives, d.negatives))) 个样本才启用")
         }
-        if c.sampleCount > 0 { parts.append("类别纠正 \(c.sampleCount) 次") }
+        if c.sampleCount > 0 { parts.append(String(localized: "类别纠正 \(c.sampleCount) 次")) }
         return parts.joined(separator: " · ")
     }
 
@@ -613,7 +613,7 @@ final class AppModel {
         if out.isEmpty {
             out.append(String(localized: "画面看起来是同一张，细节上有轻微差别"))
         } else {
-            out.insert("画面是同一张照片的不同版本", at: 0)
+            out.insert(String(localized: "画面是同一张照片的不同版本"), at: 0)
         }
         return out
     }
@@ -737,7 +737,7 @@ final class AppModel {
             lastDeletionMessage = "已删除 \(count) 项，释放 \(ByteFormat.string(bytes))。它们会在系统「最近删除」里保留 30 天。"
             Haptics.notify(.success)
         case .cancelled:
-            lastDeletionMessage = "已取消，没有删除任何东西。"
+            lastDeletionMessage = String(localized: "已取消，没有删除任何东西。")
         case .failed(let msg):
             lastDeletionMessage = "删除失败：\(msg)"
             Haptics.notify(.error)
@@ -764,7 +764,7 @@ final class AppModel {
             guard granted else { return }
             center.removePendingNotificationRequests(withIdentifiers: ["compact.due"])
             let content = UNMutableNotificationContent()
-            content.title = "待删照片已到期"
+            content.title = String(localized: "待删照片已到期")
             content.body = "\(self.pendingCount) 项 · 可释放 \(ByteFormat.string(self.pendingBytes))，打开确认执行。"
             content.sound = .default
             let fire = max(60, self.settings.grace.interval)

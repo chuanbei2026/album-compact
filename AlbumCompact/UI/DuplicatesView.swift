@@ -138,7 +138,7 @@ private struct GroupCard: View {
     private var keeperReason: String {
         model.keeper(for: group) == group.keeperID
             ? group.keeperReason
-            : "你手动指定的这一张"
+            : String(localized: "你手动指定的这一张")
     }
 
     private func thumb(_ m: AssetSnapshot) -> some View {

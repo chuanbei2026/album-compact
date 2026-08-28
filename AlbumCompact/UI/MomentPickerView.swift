@@ -29,11 +29,12 @@ struct MomentPickerView: View {
         mode == .moment ? model.momentGroups : model.variantGroups
     }
     private var titleText: String {
-        mode == .moment ? "同一时刻多张" : "同一张的不同版本"
+        mode == .moment ? String(localized: "同一时刻多张")
+                        : String(localized: "同一张的不同版本")
     }
     private var promptText: String {
-        mode == .moment ? "这一组是同一个场景的多张，挑出你要留的"
-                        : "这一组是同一张照片的不同版本，挑出你要留的"
+        mode == .moment ? String(localized: "这一组是同一个场景的多张，挑出你要留的")
+                        : String(localized: "这一组是同一张照片的不同版本，挑出你要留的")
     }
     private var group: DuplicateGroup? {
         groupIndex >= 0 && groupIndex < groups.count ? groups[groupIndex] : nil

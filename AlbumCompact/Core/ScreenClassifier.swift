@@ -17,7 +17,7 @@ enum RuleClassifier {
         var reasons: [String] = []
 
         if snapshot.isScreenRecording {
-            return (.screenRecording, 0.95, ["录屏文件"])
+            return (.screenRecording, 0.95, [String(localized: "录屏文件")])
         }
         if snapshot.isVideo {
             return (.largeVideo, 0.5, ["视频"])
@@ -30,7 +30,7 @@ enum RuleClassifier {
         // a game capture.
         if !snapshot.isScreenshot, let fp = fingerprint,
            fp.sharpness < 0.16, fp.edgeDensity < 0.12 {
-            return (.blurry, 0.55 + Double(0.16 - fp.sharpness), ["对焦模糊、细节很少"])
+            return (.blurry, 0.55 + Double(0.16 - fp.sharpness), [String(localized: "对焦模糊、细节很少")])
         }
 
         // The PhotoKit flag is authoritative. The resolution fallback exists for

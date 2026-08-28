@@ -120,7 +120,7 @@ struct SettingsView: View {
     }
 
     private var strictnessLabel: String {
-        "\(Int(momentWindowSeconds)) 秒内"
+        String(localized: "\(Int(momentWindowSeconds)) 秒内")
     }
 
     private func bind(_ key: WritableKeyPath<AppSettings, Bool>) -> Binding<Bool> {

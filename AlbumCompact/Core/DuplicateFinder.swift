@@ -354,7 +354,7 @@ enum DuplicateFinder {
             if rel >= 0.999 { reasons.append(String(localized: "最新一张")) }
         }
 
-        let reason = reasons.isEmpty ? "综合评分最高" : reasons.prefix(2).joined(separator: " · ")
+        let reason = reasons.isEmpty ? String(localized: "综合评分最高") : reasons.prefix(2).joined(separator: " · ")
         return (score, reason)
     }
 
@@ -372,7 +372,7 @@ enum DuplicateFinder {
         for m in members.sorted(by: { $0.id < $1.id }) {
             var (s, r) = keeperScore(m, in: members, fingerprint: fingerprints[m.id],
                                      tier: tier)
-            if protectedIDs.contains(m.id) { s += 5000; r = "你标记为永久保留" }
+            if protectedIDs.contains(m.id) { s += 5000; r = String(localized: "你标记为永久保留") }
             if s > bestScore + 1e-9 { bestScore = s; best = m; bestReason = r }
         }
         let ordered = [best] + members.filter { $0.id != best.id }

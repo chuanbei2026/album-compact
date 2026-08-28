@@ -177,9 +177,9 @@ enum DuplicateTier: Int, Codable, Sendable, Comparable {
 
     var title: String {
         switch self {
-        case .identical: return "完全一致"
-        case .copy:      return "同一张的副本"
-        case .moment:    return "同一时刻多张"
+        case .identical: return String(localized: "完全一致")
+        case .copy:      return String(localized: "同一张的副本")
+        case .moment:    return String(localized: "同一时刻多张")
         }
     }
     var blurb: String {

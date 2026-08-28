@@ -48,10 +48,10 @@ enum GracePeriod: String, Codable, CaseIterable, Identifiable, Sendable {
 
     var title: String {
         switch self {
-        case .immediate: return "立即执行"
-        case .oneDay:    return "1 天后"
-        case .oneWeek:   return "7 天后"
-        case .oneMonth:  return "30 天后"
+        case .immediate: return String(localized: "立即执行")
+        case .oneDay:    return String(localized: "1 天后")
+        case .oneWeek:   return String(localized: "7 天后")
+        case .oneMonth:  return String(localized: "30 天后")
         }
     }
     var interval: TimeInterval {

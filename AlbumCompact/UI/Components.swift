@@ -64,14 +64,33 @@ struct AssetImageView: View {
 // MARK: - Chips & tiles
 
 struct Chip: View {
-    let text: String
+    /// Two initialisers on purpose, mirroring `Text(_:)` vs `Text(verbatim:)`.
+    ///
+    /// A single `String` parameter was wrong in both directions at once: literal
+    /// Chinese labels reached `Text(variable)` and never localised (they were
+    /// not even extracted into the catalog), while runtime values — an app name,
+    /// a formatted date, a byte count — would be looked up as translation keys
+    /// if the type were simply switched to `LocalizedStringKey`. Callers now
+    /// have to say which kind of string they are passing.
+    private let title: Text
     var icon: String?
     var tint: Color = .white.opacity(0.85)
+
+    init(text: LocalizedStringKey, icon: String? = nil,
+         tint: Color = .white.opacity(0.85)) {
+        self.title = Text(text); self.icon = icon; self.tint = tint
+    }
+
+    /// For values that are already user data or already localised.
+    init(verbatim: String, icon: String? = nil,
+         tint: Color = .white.opacity(0.85)) {
+        self.title = Text(verbatim: verbatim); self.icon = icon; self.tint = tint
+    }
 
     var body: some View {
         HStack(spacing: 4) {
             if let icon { Image(systemName: icon).font(.caption2) }
-            Text(text).font(.caption).fontWeight(.medium)
+            title.font(.caption).fontWeight(.medium)
         }
         .foregroundStyle(tint)
         .padding(.horizontal, 9)
@@ -244,10 +263,10 @@ struct MetadataStrip: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            Chip(text: snapshot.creationDate.formatted(date: .abbreviated, time: .shortened),
+            Chip(verbatim: snapshot.creationDate.formatted(date: .abbreviated, time: .shortened),
                  icon: "calendar")
-            Chip(text: ByteFormat.string(snapshot.byteSize), icon: "internaldrive")
-            Chip(text: "\(snapshot.pixelWidth)×\(snapshot.pixelHeight)", icon: "aspectratio")
+            Chip(verbatim: ByteFormat.string(snapshot.byteSize), icon: "internaldrive")
+            Chip(verbatim: "\(snapshot.pixelWidth)×\(snapshot.pixelHeight)", icon: "aspectratio")
             if snapshot.isFavorite { Chip(text: "收藏", icon: "heart.fill", tint: .pink) }
         }
         .padding(.horizontal, 4)

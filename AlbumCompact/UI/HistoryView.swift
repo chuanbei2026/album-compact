@@ -52,9 +52,9 @@ struct HistoryView: View {
         var id: String { rawValue }
         var title: String {
             switch self {
-            case .thirty: return "30 天"
-            case .ninety: return "90 天"
-            case .all:    return "全部"
+            case .thirty: return String(localized: "30 天")
+            case .ninety: return String(localized: "90 天")
+            case .all:    return String(localized: "全部")
             }
         }
         var days: Int? {
@@ -132,7 +132,9 @@ struct HistoryView: View {
         .background(Palette.raised, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
-    private func miniStat(_ v: String, _ l: String) -> some View {
+    /// `l` is a LocalizedStringKey for the same reason StatTile's is: as a
+    /// String these three labels reached Text(variable) and stayed Chinese.
+    private func miniStat(_ v: String, _ l: LocalizedStringKey) -> some View {
         VStack(alignment: .leading, spacing: 1) {
             Text(v)
                 .font(.subheadline.weight(.semibold).monospacedDigit())

@@ -188,6 +188,23 @@
         }
       }
     },
+    "%lld 秒内": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "within %lld s"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 秒内"
+          }
+        }
+      }
+    },
     "%lld 组 · 分辨率/画质有差别，需要挑": {
       "extractionState": "manual",
       "localizations": {
@@ -433,6 +450,91 @@
         }
       }
     },
+    "1 天后": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After 1 day"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 天后"
+          }
+        }
+      }
+    },
+    "30 天": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 days"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 天"
+          }
+        }
+      }
+    },
+    "30 天后": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After 30 days"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 天后"
+          }
+        }
+      }
+    },
+    "7 天后": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After 7 days"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 天后"
+          }
+        }
+      }
+    },
+    "90 天": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "90 days"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "90 天"
+          }
+        }
+      }
+    },
     "Embedding 分布": {
       "extractionState": "manual",
       "localizations": {
@@ -649,6 +751,40 @@
         }
       }
     },
+    "你手动指定的这一张": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "the one you picked"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你手动指定的这一张"
+          }
+        }
+      }
+    },
+    "你标记为永久保留": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "you marked it always-keep"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你标记为永久保留"
+          }
+        }
+      }
+    },
     "你设置了「%@」的缓冲期。App 无法在后台自己动手删除，到期时会给你一条提醒，回来一键执行即可。": {
       "extractionState": "manual",
       "localizations": {
@@ -793,6 +929,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "允许访问相册"
+          }
+        }
+      }
+    },
+    "全部": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部"
           }
         }
       }
@@ -1054,6 +1207,23 @@
         }
       }
     },
+    "删除": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除"
+          }
+        }
+      }
+    },
     "删除 %lld 项": {
       "extractionState": "manual",
       "localizations": {
@@ -1096,6 +1266,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "删除后仍可在系统「照片 → 最近删除」里找回 30 天"
+          }
+        }
+      }
+    },
+    "删除张数": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos deleted"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "删除张数"
           }
         }
       }
@@ -1418,6 +1605,23 @@
         }
       }
     },
+    "同一张的副本": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy of one photo"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "同一张的副本"
+          }
+        }
+      }
+    },
     "同一时刻多张": {
       "extractionState": "manual",
       "localizations": {
@@ -1511,6 +1715,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "同时放进「待删」相簿"
+          }
+        }
+      }
+    },
+    "后台跑完了": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finished in the background"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台跑完了"
           }
         }
       }
@@ -1668,6 +1889,23 @@
         }
       }
     },
+    "完全一致": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exact match"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完全一致"
+          }
+        }
+      }
+    },
     "完全一致 (%lld)": {
       "extractionState": "manual",
       "localizations": {
@@ -1727,6 +1965,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "完成"
+          }
+        }
+      }
+    },
+    "对焦模糊、细节很少": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Out of focus, very little detail"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "对焦模糊、细节很少"
           }
         }
       }
@@ -1816,6 +2071,23 @@
         }
       }
     },
+    "已从 %lld 次滑动中学习": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Learned from %lld swipes"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已从 %lld 次滑动中学习"
+          }
+        }
+      }
+    },
     "已删除": {
       "extractionState": "manual",
       "localizations": {
@@ -1863,6 +2135,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "已勾选"
+          }
+        }
+      }
+    },
+    "已取消，没有删除任何东西。": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelled — nothing was deleted."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已取消，没有删除任何东西。"
           }
         }
       }
@@ -1959,6 +2248,23 @@
         }
       }
     },
+    "已选 %lld 张保留": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld selected to keep"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已选 %lld 张保留"
+          }
+        }
+      }
+    },
     "已释放": {
       "extractionState": "manual",
       "localizations": {
@@ -1993,6 +2299,23 @@
         }
       }
     },
+    "平均每次": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Average each"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平均每次"
+          }
+        }
+      }
+    },
     "归并重复组": {
       "extractionState": "manual",
       "localizations": {
@@ -2023,6 +2346,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "录屏"
+          }
+        }
+      }
+    },
+    "录屏文件": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screen recording"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "录屏文件"
           }
         }
       }
@@ -2103,6 +2443,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "待删清单 · %lld 项"
+          }
+        }
+      }
+    },
+    "待删照片已到期": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marked photos are due"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "待删照片已到期"
           }
         }
       }
@@ -2299,6 +2656,23 @@
         }
       }
     },
+    "把握 %lld%%": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld%% sure"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "把握 %lld%%"
+          }
+        }
+      }
+    },
     "把视频也纳入去重": {
       "extractionState": "manual",
       "localizations": {
@@ -2333,6 +2707,23 @@
         }
       }
     },
+    "按你标注过的同类截图判断": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Based on screenshots you have labelled"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按你标注过的同类截图判断"
+          }
+        }
+      }
+    },
     "换一个时间范围试试": {
       "extractionState": "manual",
       "localizations": {
@@ -2346,6 +2737,74 @@
           "stringUnit": {
             "state": "translated",
             "value": "换一个时间范围试试"
+          }
+        }
+      }
+    },
+    "排序权重 %lld%%": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld%% of the ranking"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排序权重 %lld%%"
+          }
+        }
+      }
+    },
+    "撤销": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Undo"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "撤销"
+          }
+        }
+      }
+    },
+    "收藏": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favourite"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收藏"
+          }
+        }
+      }
+    },
+    "改类别": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relabel"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "改类别"
           }
         }
       }
@@ -2811,6 +3270,40 @@
         }
       }
     },
+    "永久保留": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always keep"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "永久保留"
+          }
+        }
+      }
+    },
+    "永久留": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "永久留"
+          }
+        }
+      }
+    },
     "永远不要问我（一律保留）": {
       "extractionState": "manual",
       "localizations": {
@@ -3044,6 +3537,23 @@
         }
       }
     },
+    "清理次数": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleanups"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "清理次数"
+          }
+        }
+      }
+    },
     "清理记录": {
       "extractionState": "manual",
       "localizations": {
@@ -3197,6 +3707,23 @@
         }
       }
     },
+    "点图放大": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap to enlarge"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点图放大"
+          }
+        }
+      }
+    },
     "点缩略图看大图。取消勾选就不会动这一组。": {
       "extractionState": "manual",
       "localizations": {
@@ -3290,6 +3817,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "画面复杂、几乎没有文字"
+          }
+        }
+      }
+    },
+    "画面是同一张照片的不同版本": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These are versions of one photo"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "画面是同一张照片的不同版本"
           }
         }
       }
@@ -3476,6 +4020,23 @@
         }
       }
     },
+    "立即执行": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Right away"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "立即执行"
+          }
+        }
+      }
+    },
     "第 %lld / %lld 组": {
       "extractionState": "manual",
       "localizations": {
@@ -3506,6 +4067,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "类别"
+          }
+        }
+      }
+    },
+    "类别纠正 %lld 次": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld category corrections"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "类别纠正 %lld 次"
           }
         }
       }
@@ -3612,6 +4190,57 @@
         }
       }
     },
+    "约 %.1f 小时": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "about %.1f h"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "约 %.1f 小时"
+          }
+        }
+      }
+    },
+    "约 %lld 分钟": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "about %lld min"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "约 %lld 分钟"
+          }
+        }
+      }
+    },
+    "约 %lld 秒": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "about %lld s"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "约 %lld 秒"
+          }
+        }
+      }
+    },
     "结果": {
       "extractionState": "manual",
       "localizations": {
@@ -3642,6 +4271,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "给这一团命名"
+          }
+        }
+      }
+    },
+    "综合评分最高": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "best overall"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "综合评分最高"
           }
         }
       }
@@ -3727,6 +4373,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "范围"
+          }
+        }
+      }
+    },
+    "被系统中断（已处理的部分已缓存）": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interrupted by the system (progress cached)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "被系统中断（已处理的部分已缓存）"
           }
         }
       }
@@ -3964,6 +4627,23 @@
         }
       }
     },
+    "还没有学习样本 — 滑几十张就会开始变准": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing learned yet — a few dozen swipes and it starts to sharpen"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "还没有学习样本 — 滑几十张就会开始变准"
+          }
+        }
+      }
+    },
     "还没有清理记录": {
       "extractionState": "manual",
       "localizations": {
@@ -4078,6 +4758,40 @@
         }
       }
     },
+    "这一组是同一个场景的多张，挑出你要留的": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These are one scene shot several times — pick the ones to keep"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这一组是同一个场景的多张，挑出你要留的"
+          }
+        }
+      }
+    },
+    "这一组是同一张照片的不同版本，挑出你要留的": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These are versions of one photo — pick the ones to keep"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这一组是同一张照片的不同版本，挑出你要留的"
+          }
+        }
+      }
+    },
     "这一轮结束了": {
       "extractionState": "manual",
       "localizations": {
@@ -4185,6 +4899,23 @@
         }
       }
     },
+    "这台设备取不到 Vision 向量，只用规则判断（模拟器上属正常）": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Vision vectors on this device — rules only (normal on the Simulator)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这台设备取不到 Vision 向量，只用规则判断（模拟器上属正常）"
+          }
+        }
+      }
+    },
     "这张其实是…": {
       "extractionState": "manual",
       "localizations": {
@@ -4215,6 +4946,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "这次保留"
+          }
+        }
+      }
+    },
+    "这次留": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这次留"
           }
         }
       }
