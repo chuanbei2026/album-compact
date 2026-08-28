@@ -1,0 +1,1 @@
+Rebuilt around a simple idea: only pixel-identical duplicates are safe to clear without looking. Everything else now shows you the photos full size and lets you choose — including keeping more than one.
