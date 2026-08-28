@@ -71,8 +71,8 @@ xcodebuild -exportArchive \
 
 ### 凭据
 
-- Key ID `N3G5466NMU`，私钥在 `~/.appstoreconnect/private_keys/AuthKey_N3G5466NMU.p8`
-- Issuer ID `11e1deca-7f34-4781-975a-f4eab3f5d9eb`
+- Key ID `$ASC_KEY_ID`，私钥在 `~/.appstoreconnect/private_keys/AuthKey_$ASC_KEY_ID.p8`
+- Issuer ID `$ASC_ISSUER_ID`
   （在 https://appstoreconnect.apple.com/access/integrations/api 页面顶部）
 - Transporter.app 已装，所以 `altool` 可用（Xcode 26 自己不再带 iTMSTransporter）
 
@@ -133,11 +133,11 @@ iTunes 搜索 API 看不到「已预留但未上架」的名字。我查过公�
 ```bash
 # 先校验，别直接传
 xcrun altool --validate-app -f build/export/AlbumCompact.ipa -t ios \
-  --apiKey N3G5466NMU --apiIssuer 11e1deca-7f34-4781-975a-f4eab3f5d9eb
+  --apiKey $ASC_KEY_ID --apiIssuer $ASC_ISSUER_ID
 
 # 校验过了再上传
 xcrun altool --upload-app -f build/export/AlbumCompact.ipa -t ios \
-  --apiKey N3G5466NMU --apiIssuer 11e1deca-7f34-4781-975a-f4eab3f5d9eb
+  --apiKey $ASC_KEY_ID --apiIssuer $ASC_ISSUER_ID
 ```
 
 图标 alpha 通道那个坑（error 90717，只有 Apple 的 validate 会拒）**我们躲过了** ——
@@ -158,7 +158,7 @@ xcodebuild -project AlbumCompact.xcodeproj -scheme AlbumCompact \
 
 ```bash
 xcrun altool --upload-app -f build/export/AlbumCompact.ipa -t ios \
-  --apiKey N3G5466NMU --apiIssuer <你的-issuer-id>
+  --apiKey $ASC_KEY_ID --apiIssuer <你的-issuer-id>
 ```
 
 ### 商店文案

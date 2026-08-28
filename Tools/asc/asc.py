@@ -1,8 +1,23 @@
 import base64, json, subprocess, sys, time, urllib.request, os
 
-KEY_ID    = "N3G5466NMU"
-ISSUER_ID = "11e1deca-7f34-4781-975a-f4eab3f5d9eb"
-KEY_PATH  = os.path.expanduser("~/.appstoreconnect/private_keys/AuthKey_N3G5466NMU.p8")
+# Identifiers come from the environment, not from this file. They are not
+# secrets — Apple displays both unmasked, and neither does anything without the
+# .p8 private key — but a public repo is no place to pre-supply the other two
+# thirds of the triple to whoever eventually gets hold of the key.
+#
+#   export ASC_KEY_ID=XXXXXXXXXX
+#   export ASC_ISSUER_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+#   export ASC_KEY_PATH=~/.appstoreconnect/private_keys/AuthKey_$ASC_KEY_ID.p8
+#
+# Find them at https://appstoreconnect.apple.com/access/integrations/api
+KEY_ID    = os.environ.get("ASC_KEY_ID", "")
+ISSUER_ID = os.environ.get("ASC_ISSUER_ID", "")
+KEY_PATH  = os.path.expanduser(
+    os.environ.get("ASC_KEY_PATH")
+    or f"~/.appstoreconnect/private_keys/AuthKey_{KEY_ID}.p8")
+
+if not KEY_ID or not ISSUER_ID:
+    raise SystemExit("set ASC_KEY_ID and ASC_ISSUER_ID (see comment above)")
 
 def b64u(b): return base64.urlsafe_b64encode(b).rstrip(b"=")
 
