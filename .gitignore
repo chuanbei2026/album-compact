@@ -4,3 +4,5 @@ build/
 *.xcworkspace/
 DerivedData/
 HANDOFF.md
+Tools/DemoMedia/gen
+Tools/AlgoLab/algolab

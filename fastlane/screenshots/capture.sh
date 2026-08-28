@@ -62,7 +62,7 @@ for DEVICE in "iPhone 17 Pro Max" "iPad Pro 13-inch (M5)"; do
       [ -n "$R" ] && ARGS+=(-demoRoute "$R")
       xcrun simctl launch "$UDID" com.xiangyang.albumcompact "${ARGS[@]}" >/dev/null
       # The first launch has to finish a scan before anything is on screen.
-      sleep $([ "$i" -eq 0 ] && echo 26 || echo 20)
+      sleep $([ "$i" -eq 0 ] && echo 62 || echo 22)
       SIZE=$(echo "$DEVICE" | grep -q iPad && echo ipad13 || echo iphone69)
       xcrun simctl io "$UDID" screenshot "$OUT/$LOC/${SIZE}_${N}.png" >/dev/null
       echo "   $LOC/${SIZE}_${N}.png"
