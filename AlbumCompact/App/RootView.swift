@@ -96,7 +96,10 @@ private struct RegularShell: View {
     @ViewBuilder private var overviewLinks: some View {
         let pendingSuffix = model.pendingCount > 0 ? " (\(model.pendingCount))" : ""
         NavigationLink(value: Route.review) {
-            Label("待删清单" + pendingSuffix, systemImage: "trash")
+            // String(localized:) because concatenation turns this into a plain
+            // String: the key exists in the catalog, but "待删清单" + suffix is
+            // no longer a literal, so nothing is looked up.
+            Label(String(localized: "待删清单") + pendingSuffix, systemImage: "trash")
         }
         NavigationLink(value: Route.duplicates) {
             Label("完全一致 (\(model.identicalGroups.count))", systemImage: "square.on.square")

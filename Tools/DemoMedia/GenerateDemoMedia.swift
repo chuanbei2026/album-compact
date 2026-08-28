@@ -278,10 +278,17 @@ func chatShot(seed: UInt64, zh: Bool) -> CGImage {
     return c.makeImage()!
 }
 
+/// Landscape, deliberately.
+///
+/// `aspect > 1.2` carries 0.45 in the game rule — its heaviest single term —
+/// and the other strong signal, `gameishLabels`, comes from VNClassifyImage,
+/// which cannot run on the Simulator. Drawn portrait, 4 of these 5 went
+/// undetected and were counted as chat screenshots instead. Real phone game
+/// captures are landscape, so this is also simply more honest content.
 func gameShot(seed: UInt64, zh: Bool) -> CGImage {
     var rng = Rng(seed)
-    let c = context(PHONE_W, PHONE_H)
-    let W = Double(PHONE_W), H = Double(PHONE_H)
+    let c = context(PHONE_H, PHONE_W)          // rotated: 2868 x 1320
+    let W = Double(PHONE_H), H = Double(PHONE_W)
     for i in 0..<80 {                                    // saturated backdrop
         let t = Double(i) / 80
         c.fill(CGRect(x: 0, y: H * t, width: W, height: H / 80 + 2),
@@ -295,19 +302,25 @@ func gameShot(seed: UInt64, zh: Bool) -> CGImage {
     for i in 0..<40 { c.circle(rng.d(0, W), rng.d(H * 0.3, H), rng.d(3, 14),
                                (1, 0.85, 0.35), rng.d(0.3, 1)) }
     statusBar(c, W, H, dark: true)
-    // HUD
-    c.roundRect(CGRect(x: W * 0.06, y: H - 300, width: W * 0.46, height: 44), 22,
+    // HUD — a health bar, a stage label, a score, and three ability buttons.
+    // Deliberately sparse text: a game screen the classifier can read as dense
+    // text is a game screen it will mistake for a conversation.
+    c.roundRect(CGRect(x: W * 0.05, y: H * 0.86, width: W * 0.30, height: 34), 17,
                 (0, 0, 0), 0.5)
-    c.roundRect(CGRect(x: W * 0.06, y: H - 300, width: W * 0.46 * rng.d(0.3, 0.95),
-                       height: 44), 22, (0.92, 0.22, 0.26))
+    c.roundRect(CGRect(x: W * 0.05, y: H * 0.86,
+                       width: W * 0.30 * rng.d(0.3, 0.95), height: 34), 17,
+                (0.92, 0.22, 0.26))
     c.text(zh ? "第 \(rng.i(3, 48)) 关" : "Stage \(rng.i(3, 48))",
-           W * 0.06, H - 380, size: 52, (1, 1, 1), font: "PingFangSC-Semibold")
-    c.text("\(rng.i(1000, 99999))", W * 0.62, H - 380, size: 62, (1, 0.92, 0.3),
+           W * 0.05, H * 0.79, size: 44, (1, 1, 1), font: "PingFangSC-Semibold")
+    c.text("\(rng.i(1000, 99999))", W * 0.84, H * 0.79, size: 52, (1, 0.92, 0.3),
            font: "SFProText-Bold")
     for i in 0..<3 {
-        c.circle(W * (0.24 + Double(i) * 0.26), 300, 92, (1, 1, 1), 0.16)
-        c.circle(W * (0.24 + Double(i) * 0.26), 300, 78, (0.30, 0.72, 0.95), 0.85)
+        let cx = W * (0.80 + Double(i) * 0.075)
+        c.circle(cx, H * 0.14, 74, (1, 1, 1), 0.16)
+        c.circle(cx, H * 0.14, 62, (0.30, 0.72, 0.95), 0.85)
     }
+    c.circle(W * 0.10, H * 0.20, 96, (1, 1, 1), 0.14)      // movement pad
+    c.circle(W * 0.10, H * 0.20, 44, (1, 1, 1), 0.30)
     return c.makeImage()!
 }
 

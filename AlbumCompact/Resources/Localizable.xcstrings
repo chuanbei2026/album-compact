@@ -632,6 +632,23 @@
         }
       }
     },
+    "估算占用": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated size"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "估算占用"
+          }
+        }
+      }
+    },
     "你设置了「%@」的缓冲期。App 无法在后台自己动手删除，到期时会给你一条提醒，回来一键执行即可。": {
       "extractionState": "manual",
       "localizations": {
@@ -1117,6 +1134,23 @@
         }
       }
     },
+    "加白名单": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always keep"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "加白名单"
+          }
+        }
+      }
+    },
     "单列等距的设置行 + 系统状态栏": {
       "extractionState": "manual",
       "localizations": {
@@ -1249,6 +1283,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "可回收"
+          }
+        }
+      }
+    },
+    "可释放": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recoverable"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可释放"
           }
         }
       }
@@ -1782,6 +1833,23 @@
         }
       }
     },
+    "已到期": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已到期"
+          }
+        }
+      }
+    },
     "已勾选": {
       "extractionState": "manual",
       "localizations": {
@@ -1841,6 +1909,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "已收藏"
+          }
+        }
+      }
+    },
+    "已标记": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marked"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已标记"
           }
         }
       }
@@ -3272,6 +3357,23 @@
         }
       }
     },
+    "相册减负": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Album Sweeper"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "相册减负"
+          }
+        }
+      }
+    },
     "相册总占用": {
       "extractionState": "manual",
       "localizations": {
@@ -3289,6 +3391,23 @@
         }
       }
     },
+    "相册总数": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In library"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "相册总数"
+          }
+        }
+      }
+    },
     "相册权限被拒绝了。": {
       "extractionState": "manual",
       "localizations": {
@@ -3302,23 +3421,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "相册权限被拒绝了。"
-          }
-        }
-      }
-    },
-    "相册减负": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Album Sweeper"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "相册减负"
           }
         }
       }
@@ -4100,6 +4202,23 @@
         }
       }
     },
+    "这次保留": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kept this round"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这次保留"
+          }
+        }
+      }
+    },
     "这里每一组都是**同一张图存了多份** —— 像素、尺寸、文件大小全都一样，删掉多余的不会丢任何东西，所以已经替你勾好了。\n不想动的可以取消勾选。分辨率或画质**有差别**的那些不在这里，它们需要你看大图来挑。": {
       "extractionState": "manual",
       "localizations": {
@@ -4198,6 +4317,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "重复副本"
+          }
+        }
+      }
+    },
+    "重复可回收": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From duplicates"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重复可回收"
           }
         }
       }

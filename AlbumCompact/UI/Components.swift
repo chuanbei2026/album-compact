@@ -82,7 +82,12 @@ struct Chip: View {
 
 struct StatTile: View {
     let value: String
-    let label: String
+    /// `LocalizedStringKey`, not `String`. Passed as a `String` these eleven
+    /// labels reached `Text(variable)`, which does not localize and is not
+    /// extracted into the catalog either — so an English iPad showed four
+    /// Chinese stat tiles. The type is the fix: a raw literal now becomes a
+    /// catalog key automatically, and a new call site cannot regress.
+    let label: LocalizedStringKey
     var tint: Color = .primary
     var icon: String?
     /// Set when the tile leads somewhere. A tile that is tappable has to *look*
