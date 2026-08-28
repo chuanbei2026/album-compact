@@ -1,42 +1,123 @@
 # 提交到 App Store
 
-## 一、你必须自己做的两件事
+## 一、签名与导出 —— 已经通了
 
-这两步需要你的 Apple 账号凭据，我这边做不了。
+`build/export/AlbumCompact.ipa`（2.6 MB）已经签好并核验过：
 
-### 1. 让 Xcode 能签发布版
+| 检查 | 结果 |
+|---|---|
+| 签名身份 | `Apple Distribution: Xiangyang Shi (LNP5ER743F)` |
+| 嵌入描述文件 | `AlbumCompact App Store`，2027-08-27 到期 |
+| 是否 App Store 型 | ✅ 无设备列表，`get-task-allow = false` |
+| `codesign --verify --deep --strict` | ✅ 通过 |
 
-归档能成功，但 `-exportArchive` 报 `No Accounts` —— Xcode 的账号列表是空的，
-所以它无法自动创建 App Store 描述文件（目前只有开发用的那一份）。
+### 为什么不能用自动签名（这一步卡了很久，值得记下来）
 
-二选一：
+自动签名会让 Xcode 去申请一张**云托管（cloud-managed）**发布证书，而这个账号
+从来没被授予过那项权限：
 
-**A. 在 Xcode 里登录**（一次性，之后都自动）
-Xcode → Settings → Accounts → `+` → Apple ID → 登录
+```
+403 FORBIDDEN_ERROR
+"You haven't been given access to cloud-managed distribution certificates."
+```
 
-**B. 用 API key，完全不碰 Xcode 界面**
-你已经有 `~/.appstoreconnect/private_keys/AuthKey_N3G5466NMU.p8`，
-还差一个 **Issuer ID**（UUID 格式）。在
-App Store Connect → 用户和访问 → 集成 → App Store Connect API
-页面顶部就能看到。拿到后：
+误导人的地方在于：账号角色查出来是 `ACCOUNT_HOLDER` + `ADMIN`、
+`provisioningAllowed: true`，权限一点不缺 —— 卡的是「云托管」这个**特定功能**，
+和角色无关。而门户上本来就有一张手工签发的 `DISTRIBUTION` 证书（2027-08-27 到期）。
+
+**解法**：用现有证书自己建描述文件，然后手动签名，完全不走云签名。
+
+```bash
+# 一次性：用 ASC API 建 App Store 描述文件并装到本地
+python3 Tools/asc/mkprofile.py     # 见下面「可复用脚本」
+```
+
+`fastlane/ExportOptions.plist` 因此写成 `signingStyle = manual` 并点名证书和
+描述文件。导出时**不要**加 `-allowProvisioningUpdates`（加了就又去走云签名）：
 
 ```bash
 xcodebuild -exportArchive \
-  -archivePath  build/AlbumCompact.xcarchive \
+  -archivePath build/AlbumCompact.xcarchive \
   -exportOptionsPlist fastlane/ExportOptions.plist \
-  -exportPath   build/export \
-  -allowProvisioningUpdates \
-  -authenticationKeyPath   ~/.appstoreconnect/private_keys/AuthKey_N3G5466NMU.p8 \
-  -authenticationKeyID     N3G5466NMU \
-  -authenticationKeyIssuerID <你的-issuer-id>
+  -exportPath build/export
+```
+实测 5.5 秒 `EXPORT SUCCEEDED`。
+
+### 凭据
+
+- Key ID `N3G5466NMU`，私钥在 `~/.appstoreconnect/private_keys/AuthKey_N3G5466NMU.p8`
+- Issuer ID `11e1deca-7f34-4781-975a-f4eab3f5d9eb`
+  （在 https://appstoreconnect.apple.com/access/integrations/api 页面顶部）
+- Transporter.app 已装，所以 `altool` 可用（Xcode 26 自己不再带 iTMSTransporter）
+
+## 二、唯一剩下的阻碍：ASC 里还没有 App 记录
+
+```
+altool --validate-app
+→ ERROR: Cannot determine the Apple ID from Bundle ID
+         'com.xiangyang.albumcompact' and platform 'IOS'. (19)
 ```
 
-### 2. 在 App Store Connect 里建 App 记录
+Bundle ID 本身**已注册**（查过：`com.xiangyang.albumcompact`，UNIVERSAL）。
+缺的是 App 记录。**App Store Connect API 不支持创建 App 记录**，只能在网页上建：
 
-Bundle ID `com.xiangyang.albumcompact` 目前只注册过开发用途。
-新建 App 时选这个 Bundle ID，主要语言选**简体中文**（源语言是中文）。
+```
+https://appstoreconnect.apple.com/apps
+```
 
-## 二、我已经准备好的
+建的时候要填：
+
+| 字段 | 填什么 | 注意 |
+|---|---|---|
+| 平台 | iOS | |
+| 名称 | 见下面「先定名字」 | 30 字符上限 |
+| 主要语言 | **简体中文** | 源语言是中文 |
+| Bundle ID | `com.xiangyang.albumcompact` | 下拉里选，已注册 |
+| SKU | 随便一个内部编号，如 `ALBUMCOMPACT001` | 不公开，之后改不了 |
+| 用户访问权限 | 完全访问 | |
+
+### ⚠️ 先定名字，再拍截图
+
+名字会出现在导航栏里，所以**改名字等于截图重拍**。而且名字是否可用**只有 ASC 说了算** ——
+iTunes 搜索 API 看不到「已预留但未上架」的名字。我查过公开占用情况：
+
+| 候选 | 公开占用 |
+|---|---|
+| Album Compact | 无同名 |
+| AlbumCompact | 无同名 |
+| 相册瘦身 | 无同名 |
+| 照片瘦身 | 无同名 |
+| Photo Compact | 无同名 |
+
+「无同名」不等于「能用」。**先去 ASC 占名成功，再回来改** `CFBundleDisplayName`
+和 `fastlane/metadata/*/name.txt`，然后才拍截图。
+
+### 三个文档里查不到的必填字段
+
+| 字段 | 填什么 |
+|---|---|
+| Copyright | `2026 Xiangyang Shi` —— **不要加 © 符号**，Apple 自己会加 |
+| App Review 联系人 | 名、姓、电话、邮箱四项 |
+| Content Rights | *是否包含/展示/访问第三方内容* → **否** |
+
+年龄分级问卷七步答完，**没有** AI 相关的题。
+
+## 三、建好 App 记录之后
+
+```bash
+# 先校验，别直接传
+xcrun altool --validate-app -f build/export/AlbumCompact.ipa -t ios \
+  --apiKey N3G5466NMU --apiIssuer 11e1deca-7f34-4781-975a-f4eab3f5d9eb
+
+# 校验过了再上传
+xcrun altool --upload-app -f build/export/AlbumCompact.ipa -t ios \
+  --apiKey N3G5466NMU --apiIssuer 11e1deca-7f34-4781-975a-f4eab3f5d9eb
+```
+
+图标 alpha 通道那个坑（error 90717，只有 Apple 的 validate 会拒）**我们躲过了** ——
+图标是代码画的，`sips -g hasAlpha` 查过，1024 原图和归档里的两个尺寸都是 `no`。
+
+## 四、已经准备好的其余部分
 
 ### 归档与导出
 
@@ -70,7 +151,7 @@ xcrun altool --upload-app -f build/export/AlbumCompact.ipa -t ios \
 ⚠️ **别用你自己的真实相册拍上架截图** —— 那些图会公开。要么用演示素材，
 要么在真机上挑你愿意公开的内容手动截。
 
-## 三、App 隐私问卷的答案
+## 五、App 隐私问卷的答案
 
 App Store Connect 会逐项问你收集了什么。**全部选「否 / 不收集」**，
 这不是保守填法，是可以在编译产物上核验的事实：
@@ -101,7 +182,7 @@ UserNotifications · Vision（外加 Swift 运行时）。**没有一个能联�
 
 `PrivacyInfo.xcprivacy` 已随包发出：无追踪、无收集、无需申报的 API。
 
-## 四、审核可能被问到的两件事
+## 六、审核可能被问到的两件事
 
 **1. 相册权限用途说明**
 `NSPhotoLibraryUsageDescription` 已写明用途且中英双语。审核员会实际试用，
@@ -118,7 +199,7 @@ UserNotifications · Vision（外加 Swift 运行时）。**没有一个能联�
 
 要彻底避开就删掉那段，只用估算 —— 聚合数字影响 0.5%，单张 HEIC/ProRAW 偏差会大些。
 
-## 五、提交前最后一遍
+## 七、提交前最后一遍
 
 - [ ] `CFBundleVersion` 每次上传都要 +1（当前 1）
 - [ ] 归档用 Release 配置（DEBUG 代码已验证被排除：`MainThreadWatchdog` /

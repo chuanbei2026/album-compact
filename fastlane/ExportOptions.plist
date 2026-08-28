@@ -2,11 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>method</key>            <string>app-store-connect</string>
-    <key>teamID</key>            <string>LNP5ER743F</string>
-    <key>signingStyle</key>      <string>automatic</string>
-    <key>destination</key>       <string>export</string>
-    <key>uploadSymbols</key>     <true/>
-    <key>manageAppVersionAndBuildNumber</key> <false/>
+  <key>method</key><string>app-store-connect</string>
+  <key>teamID</key><string>LNP5ER743F</string>
+  <!-- Manual, deliberately. Automatic signing makes Xcode reach for a
+       *cloud-managed* distribution certificate, which this account has never
+       been granted (403 FORBIDDEN_ERROR), even though the account holder role
+       is Admin and a perfectly good manually-issued DISTRIBUTION cert exists.
+       Naming the cert and profile skips that path entirely. -->
+  <key>signingStyle</key><string>manual</string>
+  <key>signingCertificate</key><string>Apple Distribution</string>
+  <key>provisioningProfiles</key>
+  <dict>
+    <key>com.xiangyang.albumcompact</key>
+    <string>AlbumCompact App Store</string>
+  </dict>
+  <key>uploadSymbols</key><true/>
+  <key>manageAppVersionAndBuildNumber</key><false/>
 </dict>
 </plist>
