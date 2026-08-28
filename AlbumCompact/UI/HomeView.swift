@@ -31,7 +31,7 @@ struct HomeView: View {
             .padding(.bottom, model.pendingCount > 0 ? 8 : 0)
         }
         .background(Palette.surface)
-        .navigationTitle("相册瘦身")
+        .navigationTitle("相册减负")
         .safeAreaInset(edge: .bottom) {
             if model.pendingCount > 0 { pendingBar }
         }

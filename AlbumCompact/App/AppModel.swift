@@ -723,7 +723,7 @@ final class AppModel {
         let executed = ids.compactMap { Store.shared.pending[$0] }
 
         if settings.stageInAlbum {
-            _ = await DeletionService.addToStagingAlbum(ids: ids, albumTitle: String(localized: "待删 · 相册瘦身"))
+            _ = await DeletionService.addToStagingAlbum(ids: ids, albumTitle: String(localized: "待删 · 相册减负"))
         }
 
         switch await DeletionService.delete(ids: ids) {

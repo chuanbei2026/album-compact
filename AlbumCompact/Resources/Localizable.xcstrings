@@ -1942,19 +1942,19 @@
         }
       }
     },
-    "待删 · 相册瘦身": {
+    "待删 · 相册减负": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "To delete · Album Compact"
+            "value": "To delete · Album Sweeper"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "待删 · 相册瘦身"
+            "value": "待删 · 相册减负"
           }
         }
       }
@@ -3306,19 +3306,19 @@
         }
       }
     },
-    "相册瘦身": {
+    "相册减负": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Album Compact"
+            "value": "Album Sweeper"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "相册瘦身"
+            "value": "相册减负"
           }
         }
       }

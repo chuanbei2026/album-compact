@@ -1,4 +1,4 @@
-Your library is mostly things you meant to keep — and a long tail of things you never looked at again. Album Compact finds that tail and helps you clear it in as few taps as possible.
+Your library is mostly things you meant to keep — and a long tail of things you never looked at again. Album Sweeper finds that tail and helps you clear it in as few taps as possible.
 
 EVERYTHING STAYS ON YOUR PHONE
 There is no account, no server, and no network code in this app at all. Fingerprints are computed on device and screenshots are read by Apple's own Vision framework on the Neural Engine. Nothing is uploaded, because there is nothing to upload to.

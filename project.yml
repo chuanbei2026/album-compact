@@ -35,7 +35,7 @@ targets:
     info:
       path: AlbumCompact/Resources/Info.plist
       properties:
-        CFBundleDisplayName: 相册瘦身
+        CFBundleDisplayName: 相册减负
         CFBundleShortVersionString: "1.0"
         CFBundleVersion: "1"
         UILaunchScreen:

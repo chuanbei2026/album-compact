@@ -138,7 +138,7 @@ private struct RegularShell: View {
                 Section("逐张过一遍") { categoryLinks }
                 Section { settingsLink }
             }
-            .navigationTitle("相册瘦身")
+            .navigationTitle("相册减负")
             .toolbar {
                 ToolbarItem {
                     Button { model.scan() } label: { Image(systemName: "arrow.clockwise") }
@@ -285,7 +285,7 @@ private struct PermissionGate: View {
                 .font(.system(size: 58))
                 .foregroundStyle(Palette.accent)
 
-            Text("相册瘦身").font(.largeTitle.weight(.bold))
+            Text("相册减负").font(.largeTitle.weight(.bold))
 
             Text("""
             找出重复照片、聊天截图、游戏截图这些占地方又没用的东西，\
